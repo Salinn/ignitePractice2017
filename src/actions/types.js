@@ -1,0 +1,2 @@
+// Trips
+export const FETCH_TRIPS_SUCCESS = 'FETCH_TRIPS_SUCCESS';
