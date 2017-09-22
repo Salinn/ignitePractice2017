@@ -9,13 +9,26 @@ const Map = ({ trip }) => {
 
     return (
         <View>
-            <Text>
-                { trip.name }
-            </Text>
+            <MapView
+                provider={this.props.provider}
+                style={styles.map}
+                scrollEnabled={true}
+                zoomEnabled={true}
+                pitchEnabled={true}
+                rotateEnabled={false}
+                initialRegion={this.state.region}
+            >
+            </MapView>
+
         </View>
     );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    map: {
+        width: 450,
+        height: 200,
+    },
+});
 
 export default Map
