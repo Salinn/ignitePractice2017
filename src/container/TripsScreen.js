@@ -7,11 +7,14 @@ import * as TripsActions from '../actions/TripsActions';
 //Components
 import Trips from '../components/trips/Trips';
 
+
+
 class TripsScreen extends Component {
     constructor(props, context) {
         super(props, context);
 
         this.tripSelected = this.tripSelected.bind(this);
+
     }
 
     componentDidMount(){
@@ -24,15 +27,22 @@ class TripsScreen extends Component {
 
     render() {
         const { trips } = this.props;
+        const { map } = this.props;
 
         console.log(trips);
 
         return (
+
             <Trips trips={ trips }
                    onPress={ this.tripSelected } />
+
+
+
         );
+
     }
 }
+
 
 function mapStateToProps(state) {
     console.log(state);
@@ -43,7 +53,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(TripsActions, dispatch)
+        actions: bindActionCreators(TripsActions, dispatch),
     }
 }
 

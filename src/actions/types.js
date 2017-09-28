@@ -1,2 +1,3 @@
 // Trips
 export const FETCH_TRIPS_SUCCESS = 'FETCH_TRIPS_SUCCESS';
+export const FETCH_TRIP_SUCCESS = 'FETCH_TRIP_SUCCESS';
