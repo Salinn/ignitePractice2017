@@ -11,7 +11,7 @@ const height=100;
 const ASPECT_RATIO = width / height;
 const LATITUDE = 43.085374;
 const LONGITUDE = -70.795421;
-const LATITUDE_DELTA = 0.0922;
+const LATITUDE_DELTA = 0.5;
 const SPACE=.01;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
@@ -23,16 +23,24 @@ const Map = () => {
         longitudeDelta: LONGITUDE_DELTA,
     }
 
+    const points = [43.046569,-71.467996];
+
+
+
+
     return (
         <View>
             <MapView
+                ref={(ref) => { this.mapRef = ref; }}
                 provider={PROVIDER_GOOGLE}
                 style={styles.map}
                 scrollEnabled={true}
                 zoomEnabled={true}
                 pitchEnabled={true}
                 rotateEnabled={false}
-                initialRegion={region}>
+                initialRegion={region}
+                onLayout={() => this.mapRef.fitToCoordinates(points, { edgePadding: { top: 50, right: 10, bottom: 10, left: 10 }, animated: false })} >
+
             </MapView>
         </View>
     );

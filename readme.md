@@ -2,7 +2,10 @@
 Maps
 
 -add map packages @mapbox/polyline and react-native-maps
+
 -import libraries into the component you want
+
+-add API key to manifest
 
 - add MapView to render where the map should be displayed
 
