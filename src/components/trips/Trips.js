@@ -2,7 +2,7 @@
 import React from 'react';
 import { FlatList, StyleSheet, View, Text } from 'react-native';
 //Components
-import Trip from './Trip';
+import Trip from '../Trip/Trip';
 
 const Trips = ({ trips, onPress }) => {
     const _keyExtractor = (item, index) => item.id;

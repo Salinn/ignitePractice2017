@@ -1,56 +1,73 @@
 //React
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 //Components
 import MapView, { PROVIDER_GOOGLE }  from 'react-native-maps';
 import Polyline from '@mapbox/polyline';
 
-
-const width=600;
-const height=100;
-const ASPECT_RATIO = width / height;
-const LATITUDE = 43.085374;
-const LONGITUDE = -70.795421;
-const LATITUDE_DELTA = 0.5;
-const SPACE=.01;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-
-const Map = () => {
-    const region = {
-        latitude: LATITUDE,
-        longitude: LONGITUDE,
-        latitudeDelta: LATITUDE_DELTA,
-        longitudeDelta: LONGITUDE_DELTA,
-    }
-
-    const points = [43.046569,-71.467996];
-
-
-
+const Map = ({ region }) => {
+    const point1 = {
+        latitude:43.085374,
+        longitude:-70.795421,
+    };
+    const point2 = {
+    latitude:43.314068,
+    longitude:-70.419811,
+    };
 
     return (
         <View>
             <MapView
-                ref={(ref) => { this.mapRef = ref; }}
+                ref={(ref) => { mapRef = ref; }}
                 provider={PROVIDER_GOOGLE}
-                style={styles.map}
+                style={styles.mapstyle}
                 scrollEnabled={true}
                 zoomEnabled={true}
                 pitchEnabled={true}
                 rotateEnabled={false}
-                initialRegion={region}
-                onLayout={() => this.mapRef.fitToCoordinates(points, { edgePadding: { top: 50, right: 10, bottom: 10, left: 10 }, animated: false })} >
+                initialRegion={region} >
 
             </MapView>
+
+        <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                    onPress={() => mapRef.fitToCoordinates([point1,point2], { edgePadding: { top: 5, right: 5, bottom: 5, left: 5 }, animated: true })}>
+                    <Text>Fit Bottom Two Markers with Padding</Text>
+                </TouchableOpacity>
+        </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    map: {
+    mapstyle: {
         width: 450,
-        height: 200,
+        height: 800,
     },
+            container: {
+            ...StyleSheet.absoluteFillObject,
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+        },
+            map: {
+            ...StyleSheet.absoluteFillObject,
+        },
+            bubble: {
+            backgroundColor: 'rgba(255,255,255,0.7)',
+            paddingHorizontal: 18,
+            paddingVertical: 12,
+            borderRadius: 20,
+        },
+            button: {
+            marginTop: 12,
+            paddingHorizontal: 12,
+            alignItems: 'center',
+            marginHorizontal: 10,
+        },
+            buttonContainer: {
+            marginVertical: 40,
+            backgroundColor: 'transparent',
+        },
 });
 
 export default Map

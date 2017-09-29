@@ -2,9 +2,12 @@ export default {
     trips: {
         lastMonthsTrips: [],
     },
-    map: {
-        tripStart:[43.085374, -70.795421],
-        tripEnd:[43.085374, -70.700000],
-
+    trip: {
+        region: {
+            latitude: 0,
+            longitude: 0,
+            latitudeDelta: 0,
+            longitudeDelta: 0,
+        }
     }
 };

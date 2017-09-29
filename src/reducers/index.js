@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import trips from './TripsReducer';
-import map from './TripReducer';
+import trip from './TripReducer';
 
 const rootReducer = combineReducers({
     trips,
-    map,
+    trip,
 });
 
 export default rootReducer;
