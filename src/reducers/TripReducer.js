@@ -9,3 +9,4 @@ export default function tripReducer(state = initialState.trip, action) {
             return state;
     }
 }
+

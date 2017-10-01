@@ -6,7 +6,10 @@ import MapView, { PROVIDER_GOOGLE }  from 'react-native-maps';
 import Polyline from '@mapbox/polyline';
 
 
+
+
 const Map = ({ region }) => {
+
     const point1 = {
         latitude:43.085374,
         longitude:-70.795421,
@@ -36,7 +39,7 @@ const Map = ({ region }) => {
                 title={"Test 2" }
                 coordinate={point2}
                 />
-
+            
 
             </MapView>
             <MapView
