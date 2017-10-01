@@ -11,4 +11,7 @@ Maps
 
 -Add Google Map API call from https://medium.com/@ali_oguzhan/react-native-maps-with-google-directions-api-bc716ed7a366
 
--add in fitToCoordinates
+-add in fitToMarkers
+        - I want to call onMapReady in new MapView
+
+- for marker styles....

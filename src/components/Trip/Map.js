@@ -5,14 +5,15 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import MapView, { PROVIDER_GOOGLE }  from 'react-native-maps';
 import Polyline from '@mapbox/polyline';
 
+
 const Map = ({ region }) => {
     const point1 = {
         latitude:43.085374,
         longitude:-70.795421,
     };
     const point2 = {
-    latitude:43.314068,
-    longitude:-70.419811,
+        latitude:43.063417,
+        longitude:-70.791046,
     };
 
     return (
@@ -25,16 +26,25 @@ const Map = ({ region }) => {
                 zoomEnabled={true}
                 pitchEnabled={true}
                 rotateEnabled={false}
-                initialRegion={region} >
+                initialRegion={region}
+                >
+            <MapView.Marker
+                title={"Test 1" }
+                coordinate={point1}
+                />
+            <MapView.Marker
+                title={"Test 2" }
+                coordinate={point2}
+                />
+
+
+            </MapView>
+            <MapView
+
+            onMapReady ={() => mapRef.fitToCoordinates([point1,point2], { edgePadding: { top: 100, right: 5, bottom: 100, left: 5 }, animated: false })}>
 
             </MapView>
 
-        <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                    onPress={() => mapRef.fitToCoordinates([point1,point2], { edgePadding: { top: 5, right: 5, bottom: 5, left: 5 }, animated: true })}>
-                    <Text>Fit Bottom Two Markers with Padding</Text>
-                </TouchableOpacity>
-        </View>
         </View>
     );
 };
@@ -42,7 +52,7 @@ const Map = ({ region }) => {
 const styles = StyleSheet.create({
     mapstyle: {
         width: 450,
-        height: 800,
+        height: 600,
     },
             container: {
             ...StyleSheet.absoluteFillObject,
