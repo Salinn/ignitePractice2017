@@ -22,19 +22,6 @@ const Map = ({ region }) => {
 
 
 
-    async function getDirections() {
-        let resp = fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ point1 }&destination=${ point2 }`);
-        let respJson = await resp.json();
-        let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
-        let coords = points.map((point, index) => {
-            return {
-                latitude: point[0],
-                longitude: point[1]
-            }
-        });
-        this.setState({coords: coords})
-        return coords;
-    }
 
 
 
@@ -52,14 +39,15 @@ const Map = ({ region }) => {
                 >
             <MapView.Marker
                 title={"Test 1" }
-                coordinate={point1}
+                coordinate={region.startLocation}
+                pinColor = "blue"
                 />
             <MapView.Marker
                 title={"Test 2" }
-                coordinate={point2}
+                coordinate={region.endLocation}
                 />
             <MapView.Polyline
-              coordinates={this.state.coords}
+              coordinates={region.coordinates}
               strokeWidth={2}
               strokeColor="blue"/>
 
