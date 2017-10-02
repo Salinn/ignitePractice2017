@@ -10,6 +10,7 @@ import Polyline from '@mapbox/polyline';
 
 const Map = ({ region }) => {
 
+
     const point1 = {
         latitude:43.085374,
         longitude:-70.795421,
@@ -18,6 +19,24 @@ const Map = ({ region }) => {
         latitude:43.063417,
         longitude:-70.791046,
     };
+
+
+
+    async function getDirections() {
+        let resp = fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ point1 }&destination=${ point2 }`);
+        let respJson = await resp.json();
+        let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
+        let coords = points.map((point, index) => {
+            return {
+                latitude: point[0],
+                longitude: point[1]
+            }
+        });
+        this.setState({coords: coords})
+        return coords;
+    }
+
+
 
     return (
         <View>
@@ -39,13 +58,16 @@ const Map = ({ region }) => {
                 title={"Test 2" }
                 coordinate={point2}
                 />
-            
+            <MapView.Polyline
+              coordinates={this.state.coords}
+              strokeWidth={2}
+              strokeColor="blue"/>
+
 
             </MapView>
             <MapView
 
             onMapReady ={() => mapRef.fitToCoordinates([point1,point2], { edgePadding: { top: 100, right: 5, bottom: 100, left: 5 }, animated: false })}>
-
             </MapView>
 
         </View>
