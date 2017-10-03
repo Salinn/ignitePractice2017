@@ -11,18 +11,6 @@ import Polyline from '@mapbox/polyline';
 const Map = ({ trip }) => {
 
 
-    const startLocation = {
-        latitude:43.085374,
-        longitude:-70.795421,
-    };
-    const endLocation = {
-        latitude:43.063417,
-        longitude:-70.791046,
-    };
-    const cord=[
-        startLocation,
-        endLocation
-    ];
 
     return (
         <View>
@@ -48,14 +36,14 @@ const Map = ({ trip }) => {
 
                     <MapView.Polyline
               coordinates={trip.coordinates}
-              strokeWidth={10}
+              strokeWidth={4}
               strokeColor="blue"/>
 
 
             </MapView>
             <MapView
 
-            onMapReady ={() => mapRef.fitToCoordinates([startLocation,endLocation], { edgePadding: { top: 100, right: 100, bottom: 100, left: 100 }, animated: false })}>
+            onMapReady ={() => mapRef.fitToCoordinates([trip.startLocation,trip.endLocation], { edgePadding: { top: 100, right: 100, bottom: 100, left: 100 }, animated: false })}>
             </MapView>
 
         </View>

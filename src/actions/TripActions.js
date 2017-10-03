@@ -71,11 +71,11 @@ const region = {
 
 const startLocation = {
     latitude:43.085374,
-    longitude:-70.795421,
+    longitude:-70.795421
 };
 const endLocation = {
-    latitude:43.063417,
-    longitude:-70.791046,
+    latitude:42.349769,
+    longitude:-71.071268
 };
 
 const startLoc = [
@@ -83,8 +83,8 @@ const startLoc = [
     -70.795421
 ];
 const endLoc = [
-    43.063417,
-    -70.791046,
+    42.349769,
+    -71.071268
 ];
 
 const c_region = {
