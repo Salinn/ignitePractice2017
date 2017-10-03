@@ -8,7 +8,7 @@ export const fetchTrip = ({ user_id }) => async dispatch => {
         // const region =  trips[Math.floor(Math.random()*trips.length)];
        // let payload = TripAPI.fetchTrip({ tripId })
         dispatch(fetchMapSuccess({ region }));
-        dispatch(fetchPolyFillLine({startLoc, endLoc}));
+        dispatch(fetchPolyFillLine({startLocation, endLocation}));
          dispatch(fetchStartSuccess({startLocation}));
         dispatch(fetchEndSuccess({endLocation}));
     } catch(error) {
@@ -17,8 +17,10 @@ export const fetchTrip = ({ user_id }) => async dispatch => {
 };
 
 
-export const fetchPolyFillLine = ({ startLoc, endLoc }) => async dispatch => {
+export const fetchPolyFillLine = ({ startLocation, endLocation }) => async dispatch => {
     try {
+        startLoc = [startLocation.latitude,startLocation.longitude];
+        endLoc=[endLocation.latitude,endLocation.longitude];
 
         let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ startLoc }&destination=${ endLoc }`)
         let respJson = await resp.json();
@@ -78,14 +80,7 @@ const endLocation = {
     longitude:-71.071268
 };
 
-const startLoc = [
-    43.085374,
-    -70.795421
-];
-const endLoc = [
-    42.349769,
-    -71.071268
-];
+
 
 const c_region = {
     latitude: 42.938767,
