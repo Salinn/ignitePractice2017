@@ -5,7 +5,9 @@ Maps
 
 -import libraries into the component you want
 
--add API key to manifest
+-add API key to manifest--> <meta-data
+                                            android:name="com.google.android.geo.API_KEY"
+                                            android:value="AIzaSyAUesAYa1f8yqY4OuCq33CjBJUNBWp15r8"/>
 
 -add MapView to render where the map should be displayed
 
