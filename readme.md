@@ -19,7 +19,8 @@ Maps
 - for marker styles can play with color. will want to get icon though
 
 
-- in Actions, call the polyline calculation
+- in Actions, call the polyline calculation: use start and end location objects (transform at start of function using startlocation= start.lat)
+
 
 - in acions, we will also call the region, start and end lcoations, and send the polyline for the directions
 
@@ -28,3 +29,5 @@ Maps
 - in reducer, call the Trip Success action
 
 - in container, i will have the render function, calling the state of the components
+
+- make sure that all things have pieces in reducer
