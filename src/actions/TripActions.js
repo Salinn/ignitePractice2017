@@ -7,17 +7,20 @@ export const fetchTrip = ({ user_id }) => async dispatch => {
         // let payload = await TripsApi.getTrips({ user_id });
         // const region =  trips[Math.floor(Math.random()*trips.length)];
        // let payload = TripAPI.fetchTrip({ tripId })
-        dispatch(fetchMapSuccess({ region }))
-        dispatch(fetchPolyFillLineSuccess({ startLocation, endLocation}))
+        dispatch(fetchMapSuccess({ region }));
+        dispatch(fetchPolyFillLine({startLoc, endLoc}));
+         dispatch(fetchStartSuccess({startLocation}));
+        dispatch(fetchEndSuccess({endLocation}));
     } catch(error) {
         console.log(error);
     }
 };
 
-export const fetchPolyFillLine = ({ startLocation, endLocation }) => async dispatch => {
+
+export const fetchPolyFillLine = ({ startLoc, endLoc }) => async dispatch => {
     try {
 
-        let resp = fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ startLocation }&destination=${ endLocation }`);
+        let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ startLoc }&destination=${ endLoc }`)
         let respJson = await resp.json();
         let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
         let coordinates = points.map((point, index) => {
@@ -25,7 +28,7 @@ export const fetchPolyFillLine = ({ startLocation, endLocation }) => async dispa
                 latitude: point[0],
                 longitude: point[1]
             }
-        });
+        })
 
         dispatch(fetchPolyFillLineSuccess({ coordinates }))
     } catch(error) {
@@ -38,6 +41,15 @@ export const fetchMapSuccess = ({ region }) => {
 
 };
 
+export const fetchStartSuccess = ({ startLocation }) => {
+    return { type: types.FETCH_START_SUCCESS, startLocation }
+
+};
+
+export const fetchEndSuccess = ({ endLocation }) => {
+    return { type: types.FETCH_END_SUCCESS, endLocation }
+
+};
 export const fetchPolyFillLineSuccess  = ({ coordinates }) => {
     return { type: types.FETCH_POLYLINE_SUCCESS, coordinates }
 
@@ -66,6 +78,14 @@ const endLocation = {
     longitude:-70.791046,
 };
 
+const startLoc = [
+    43.085374,
+    -70.795421
+];
+const endLoc = [
+    43.063417,
+    -70.791046,
+];
 
 const c_region = {
     latitude: 42.938767,

@@ -8,26 +8,21 @@ import Polyline from '@mapbox/polyline';
 
 
 
-const Map = ({ region }) => {
+const Map = ({ trip }) => {
 
 
-    const point1 = {
+    const startLocation = {
         latitude:43.085374,
         longitude:-70.795421,
     };
-    const point2 = {
+    const endLocation = {
         latitude:43.063417,
-        longitude:-71.791046,
+        longitude:-70.791046,
     };
-
-
-    const cord =[
-    point1,
-    point2
-]
-
-
-
+    const cord=[
+        startLocation,
+        endLocation
+    ];
 
     return (
         <View>
@@ -39,27 +34,28 @@ const Map = ({ region }) => {
                 zoomEnabled={true}
                 pitchEnabled={true}
                 rotateEnabled={false}
-                initialRegion={region}
+                initialRegion={trip.region}
                 >
             <MapView.Marker
                 title={"Test 1" }
-                coordinate={point1}
+                coordinate={trip.startLocation}
                 pinColor = "blue"
                 />
             <MapView.Marker
                 title={"Test 2" }
-                coordinate={point2}
+                coordinate={trip.endLocation}
                 />
-            <MapView.Polyline
-              coordinates={cord}
-              strokeWidth={2}
+
+                    <MapView.Polyline
+              coordinates={trip.coordinates}
+              strokeWidth={10}
               strokeColor="blue"/>
 
 
             </MapView>
             <MapView
 
-            onMapReady ={() => mapRef.fitToCoordinates([point1,point2], { edgePadding: { top: 100, right: 100, bottom: 100, left: 100 }, animated: false })}>
+            onMapReady ={() => mapRef.fitToCoordinates([startLocation,endLocation], { edgePadding: { top: 100, right: 100, bottom: 100, left: 100 }, animated: false })}>
             </MapView>
 
         </View>

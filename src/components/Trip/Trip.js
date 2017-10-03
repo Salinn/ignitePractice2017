@@ -7,7 +7,7 @@ import Map from './Map';
 const Trip = ({ trip }) => {
     return (
         <View>
-            <Map region={trip.region} />
+            <Map trip={trip} />
         </View>
     );
 };
