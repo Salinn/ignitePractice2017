@@ -20,6 +20,7 @@ class TripScreen extends Component {
     componentDidMount(){
         this.props.actions.fetchTrip({ user_id: 1 });
 
+
     }
 
     tripSelected() {

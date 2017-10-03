@@ -17,10 +17,14 @@ const Map = ({ region }) => {
     };
     const point2 = {
         latitude:43.063417,
-        longitude:-70.791046,
+        longitude:-71.791046,
     };
 
 
+    const cord =[
+    point1,
+    point2
+]
 
 
 
@@ -39,15 +43,15 @@ const Map = ({ region }) => {
                 >
             <MapView.Marker
                 title={"Test 1" }
-                coordinate={region.startLocation}
+                coordinate={point1}
                 pinColor = "blue"
                 />
             <MapView.Marker
                 title={"Test 2" }
-                coordinate={region.endLocation}
+                coordinate={point2}
                 />
             <MapView.Polyline
-              coordinates={region.coordinates}
+              coordinates={cord}
               strokeWidth={2}
               strokeColor="blue"/>
 
@@ -55,7 +59,7 @@ const Map = ({ region }) => {
             </MapView>
             <MapView
 
-            onMapReady ={() => mapRef.fitToCoordinates([point1,point2], { edgePadding: { top: 100, right: 5, bottom: 100, left: 5 }, animated: false })}>
+            onMapReady ={() => mapRef.fitToCoordinates([point1,point2], { edgePadding: { top: 100, right: 100, bottom: 100, left: 100 }, animated: false })}>
             </MapView>
 
         </View>

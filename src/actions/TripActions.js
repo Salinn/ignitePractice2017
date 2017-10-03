@@ -8,7 +8,7 @@ export const fetchTrip = ({ user_id }) => async dispatch => {
         // const region =  trips[Math.floor(Math.random()*trips.length)];
        // let payload = TripAPI.fetchTrip({ tripId })
         dispatch(fetchMapSuccess({ region }))
-        dispatch(fetchPolyFillLine({ startLocation, endLocation}))
+        dispatch(fetchPolyFillLineSuccess({ startLocation, endLocation}))
     } catch(error) {
         console.log(error);
     }
